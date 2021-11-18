@@ -20,4 +20,8 @@ export class CharacterService {
                 this.characterStream.next(data)
             })
     }
+
+    deleteCharacter = (id:number):Observable<Character[]> => {
+        return this.http.delete<Character[]>(`${environment.URL}/${id}`)
+    }
 }

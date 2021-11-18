@@ -10,7 +10,7 @@ import { CharacterService } from '../service/character.service';
 export class CharacterPageComponent implements OnInit {
   characters: Array<Character> = [];
 
-  constructor(private characterService: CharacterService) {}
+  constructor(private characterService: CharacterService) { }
 
   ngOnInit(): void {
     this.characterService.getCharacter();
@@ -24,9 +24,17 @@ export class CharacterPageComponent implements OnInit {
     this.characterService.characterStream.subscribe(data => {
       this.characters = data
     },
-    err => console.error(err)
-    
+      err => console.error(err)
+
     )
-  } 
+  }
+
+  deleteByCharacter = (characters: number): void => {
+    this.characterService.deleteCharacter(characters).subscribe(data => {
+      this.characterService.getCharacter();
+    },
+      error => console.error(error)
+    )
+  }
 
 }

@@ -1,0 +1,54 @@
+.list-div {
+    margin: 4em;
+}
+
+.delete-button {
+    color: white;
+    background-color: tomato;
+    border: none;
+    padding: 5px;  
+    font-size: smaller;
+    border-radius: 10%;
+}
+
+.delete-button:hover {
+    color: tomato;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s ease-out;
+}
+
+.add-button {
+    color: white;
+    background-color: lightseagreen;
+    border: none;
+    font-size: smaller;
+    border-radius: 10%;
+    width: 10em;
+    height: 2em;
+}
+
+.add-button:hover {
+    color: lightseagreen;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s ease-out;
+}
+
+.fade-in {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}

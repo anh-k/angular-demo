@@ -1,1 +1,3 @@
-<app-character-list [characters]="characters"></app-character-list>
+<h1 class="title">CHAMPIONS</h1>
+
+<app-character-list [characters]="characters" (deleteCharacter)="deleteByCharacter($event)"></app-character-list>
