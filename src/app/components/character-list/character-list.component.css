@@ -64,12 +64,19 @@
 }
 
 .modal-title {
+    padding:1em;
+    margin: 1em;
     text-align: center;
-    margin: 2em;
+    margin-top: 2em;
+    border: black 1px solid;
 }
 
-.done-button {
-    align-self: center;
+.new-button {
+    margin-bottom: 2em;
+}
+
+.modal-window {
+    margin: 2em;
 }
 
 @keyframes fadeInOpacity {

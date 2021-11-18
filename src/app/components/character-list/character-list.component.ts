@@ -8,6 +8,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./character-list.component.css']
 })
 export class CharacterListComponent implements OnInit {
+  isUpdateCharacter: boolean = false;
   isAddDisplay: boolean = false;
   isAddCharacter: boolean = false;
   @Input() characters: Character[] = [];
@@ -18,11 +19,7 @@ export class CharacterListComponent implements OnInit {
   constructor(private modalService: NgbModal) { }
 
   open(content: any) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-
-    }, (reason) => {
-
-    });
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 
   private getDismissReason(reason: any): string {
@@ -40,22 +37,22 @@ export class CharacterListComponent implements OnInit {
 
   addByCharacter = (title: string, key: string, name: string, active: boolean) => {
     let character: Character = { title, key, name, active };
-
-    this.addCharacter.emit(character);
     this.isAddDisplay = false;
     this.isAddCharacter = true;
     setTimeout(() => {
       this.isAddCharacter = false
-    }, 3000);
+    }, 5000);
+
+    this.addCharacter.emit(character);
   }
 
   updateByCharacter = (id: string, title: string, key: string, name: string, active: boolean) => {
-
     let idNumber = Number(id);
-
     let character: Character = { title, id:idNumber, key, name, active };
-
-    console.log(character)
+    this.isUpdateCharacter = true;
+    setTimeout(() => {
+      this.isUpdateCharacter = false
+    }, 5000);
 
     this.updateCharacter.emit(character);
   }
