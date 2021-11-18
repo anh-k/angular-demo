@@ -1,0 +1,22 @@
+<table class="table table-striped table-dark" *ngFor="let character of characters; let i = index">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+            <th scope="col">Key</th>
+            <th scope="col">Name</th>
+            <th scope="col">Active</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>{{ character.id }}</th>
+        <th>{{ character.title }}</th>
+        <td>{{character.key}}</td>
+        <td>{{ character.name }}</td>
+        <td>{{ character.active }}</td>
+
+      </tr>
+    </tbody>
+  </table>
