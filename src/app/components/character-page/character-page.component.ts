@@ -22,17 +22,31 @@ export class CharacterPageComponent implements OnInit {
 
   getCharacters = (): void => {
     this.characterService.characterStream.subscribe(data => {
-      this.characters = data
+      this.characters = data.sort((a, b) => {
+        if (a.name < b.name)
+          return -1;
+        if (a.name > b.name)
+          return 1;
+        return 0;
+      })
     },
       err => console.error(err)
 
     )
   }
 
-  addCharacter = (character: Character): void => {
+  addByCharacter = (character: Character): void => {
     this.characterService.addCharacter(character).subscribe(data => {
       this.characterService.getCharacter();
-    })
+    },
+    error => console.error(error))
+  }
+
+  updateByCharacter = (character: Character): void => {
+    this.characterService.updateCharacter(character).subscribe(data => {
+      this.characterService.getCharacter();
+    },
+    error => console.error(error))
   }
 
   deleteByCharacter = (character: number): void => {

@@ -2,6 +2,22 @@
     margin: 4em;
 }
 
+.update-button {
+    color: white;
+    background-color: sandybrown;
+    border: none;
+    padding: 5px;
+    font-size: smaller;
+    border-radius: 10%;
+}
+
+.update-button:hover {
+    color: sandybrown;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s ease-out;
+}
+
 .delete-button {
     color: white;
     background-color: tomato;
@@ -41,6 +57,19 @@
     animation-iteration-count: 1;
     animation-timing-function: ease-in;
     animation-duration: 0.5s;
+}
+
+.add-section {
+    margin: 2em;
+}
+
+.modal-title {
+    text-align: center;
+    margin: 2em;
+}
+
+.done-button {
+    align-self: center;
 }
 
 @keyframes fadeInOpacity {

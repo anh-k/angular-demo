@@ -25,6 +25,10 @@ export class CharacterService {
         return this.http.post<Character>(environment.URL, data)
     }
 
+    updateCharacter = (data:Character): Observable<Character> => {
+        return this.http.patch<Character>(`${environment.URL}/${data.id}`, data)
+    }
+
     deleteCharacter = (id: number): Observable<Character[]> => {
         return this.http.delete<Character[]>(`${environment.URL}/${id}`)
     }
