@@ -7,21 +7,30 @@ import { Character } from '../model/character';
   styleUrls: ['./character-list.component.css']
 })
 export class CharacterListComponent implements OnInit {
-  isAddDisplay : boolean = false;
+  isAddDisplay: boolean = false;
+  isAddCharacter: boolean = false;
   @Input() characters: Character[] = [];
-  @Output() deleteCharacter:EventEmitter<number> = new EventEmitter<number>();
+  @Output() deleteCharacter: EventEmitter<number> = new EventEmitter<number>();
+  @Output() newCharacter: EventEmitter<Character> = new EventEmitter<Character>();
 
   constructor() { }
 
   ngOnInit(): void {
-
-  }
-  
-  deleteByCharacter = (characters: Character) => {
-    this.deleteCharacter.emit(characters.id);
   }
 
-  displayAddSection() : void {
+  addByCharacter = (title: string, key: string, name: string, active: boolean) => {
+    let character: Character = {title, key, name, active};
+
+    this.newCharacter.emit(character);
+    this.isAddDisplay = false;
+    this.isAddCharacter = true;
+  }
+
+  deleteByCharacter = (character: Character) => {
+    this.deleteCharacter.emit(character.id);
+  }
+
+  displayAddSection(): void {
     this.isAddDisplay = !this.isAddDisplay;
   }
 

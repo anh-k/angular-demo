@@ -21,7 +21,11 @@ export class CharacterService {
             })
     }
 
-    deleteCharacter = (id:number):Observable<Character[]> => {
+    addCharacter = (data: Character): Observable<Character> => {
+        return this.http.post<Character>(environment.URL, data)
+    }
+
+    deleteCharacter = (id: number): Observable<Character[]> => {
         return this.http.delete<Character[]>(`${environment.URL}/${id}`)
     }
 }

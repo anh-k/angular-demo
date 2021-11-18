@@ -1,50 +1,58 @@
 <div class="table-responsive list-div">
     <table class="table table-bordered table-striped caption-top">
         <caption>
-
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+            <div class="alert alert-success fade-in" role="alert" *ngIf="isAddCharacter">
+                A new contender has arrived !
+              </div>
+            <button class="btn btn-outline-secondary" type="button" id="dropdownMenuButton1"
                 data-bs-toggle="dropdown" aria-expanded="false" (click) = "displayAddSection()">
                 + New Champion
             </button>
+           
             <section class="add-section fade-in" *ngIf="isAddDisplay">
                 <div class="form-floating mb-3 mt-3">
-                    <input type="title" class="form-control" id="floatingInput" placeholder="Title">
-                    <label for="floatingInput">Title</label>
-                </div>
-                <div class="form-floating mb-3 mt-3">
-                    <input type="key" class="form-control" id="floatingPassword" placeholder="Key">
-                    <label for="floatingPassword">Key</label>
-                </div>
-                <div class="form-floating mb-3 mt-3">
-                    <input type="name" class="form-control" id="floatingPassword" placeholder="Name">
-                    <label for="floatingPassword">Name</label>
-                </div>
-
-                <div class="form-floating mb-3 mt-3">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" #active>
                         <label class="form-check-label" for="flexSwitchCheckDefault">Active</label>
                     </div>
                 </div>
+                <div class="form-floating mb-3 mt-3">
+                    <input type="title" class="form-control" id="floatingInput" placeholder="Title" #title>
+                    <label for="floatingInput">Title</label>
+                </div>
+                <div class="form-floating mb-3 mt-3">
+                    <input type="key" class="form-control" id="floatingPassword" placeholder="Key" #key>
+                    <label for="floatingPassword">Key</label>
+                </div>
+                <div class="form-floating mb-3 mt-3">
+                    <input type="name" class="form-control" id="floatingPassword" placeholder="Name" #name>
+                    <label for="floatingPassword">Name</label>
+                </div>
+
+        
+                <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+                <label class="btn btn-outline-success" for="btn-check-outlined" (click)="addByCharacter(title.value, key.value, name.value, active.checked)">+ Add</label><br>
+               
             </section>
         </caption>
         <thead>
             <tr class="table-dark">
                 <th scope="col">ID</th>
+                <th scope="col">Status</th>
                 <th scope="col">Title</th>
                 <th scope="col">Key</th>
                 <th scope="col">Name</th>
-                <th scope="col">Status</th>
                 <th scope="col">Delete</th>
             </tr>
         </thead>
         <tbody *ngFor="let character of characters; let i = index">
-            <tr *ngIf="character.active">
+            <tr>
                 <td>{{ character.id }}</td>
+                <td *ngIf="character.active"><span class="badge rounded-pill bg-success">Active</span></td>
+                <td *ngIf="!character.active"><span class="badge rounded-pill bg-secondary">Unactive</span></td>
                 <td>{{ character.title }}</td>
                 <td>{{character.key}}</td>
                 <td>{{ character.name }}</td>
-                <td *ngIf="character.active">Active</td>
                 <td><button (click)="deleteByCharacter(character)" class="delete-button">x Delete</button></td>
             </tr>
 

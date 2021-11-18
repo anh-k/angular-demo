@@ -1,3 +1,7 @@
-<h1 class="title">CHAMPIONS</h1>
 
-<app-character-list [characters]="characters" (deleteCharacter)="deleteByCharacter($event)"></app-character-list>
+<div class="title">
+    <p>Welcome to the League of Draven !</p>
+
+<h1>CHAMPIONS</h1>
+</div>
+<app-character-list [characters]="characters" (deleteCharacter)="deleteByCharacter($event)" (newCharacter)="addCharacter($event)"></app-character-list>

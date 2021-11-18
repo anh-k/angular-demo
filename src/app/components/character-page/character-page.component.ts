@@ -29,8 +29,14 @@ export class CharacterPageComponent implements OnInit {
     )
   }
 
-  deleteByCharacter = (characters: number): void => {
-    this.characterService.deleteCharacter(characters).subscribe(data => {
+  addCharacter = (character: Character): void => {
+    this.characterService.addCharacter(character).subscribe(data => {
+      this.characterService.getCharacter();
+    })
+  }
+
+  deleteByCharacter = (character: number): void => {
+    this.characterService.deleteCharacter(character).subscribe(data => {
       this.characterService.getCharacter();
     },
       error => console.error(error)

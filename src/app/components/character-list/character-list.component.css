@@ -6,7 +6,7 @@
     color: white;
     background-color: tomato;
     border: none;
-    padding: 5px;  
+    padding: 5px;
     font-size: smaller;
     border-radius: 10%;
 }
@@ -47,8 +47,8 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
-
 }
